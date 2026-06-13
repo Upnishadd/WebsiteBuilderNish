@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Website Builder Nish social share image">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1117" />
+      <stop offset="100%" stop-color="#161C26" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B8A9" />
+      <stop offset="100%" stop-color="#009B8E" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="985" cy="130" r="220" fill="#00B8A9" opacity="0.12" />
+  <circle cx="1080" cy="505" r="170" fill="#00B8A9" opacity="0.1" />
+  <circle cx="180" cy="545" r="120" fill="#00B8A9" opacity="0.08" />
+
+  <rect x="82" y="88" width="92" height="92" rx="22" fill="url(#accent)" />
+  <text x="128" y="149" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="54" font-weight="800" fill="#FFFFFF">N</text>
+
+  <text x="82" y="248" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">
+    Melbourne Web Designer
+  </text>
+  <text x="82" y="332" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="72" font-weight="800" fill="#00B8A9">
+    for Small Businesses
+  </text>
+
+  <text x="82" y="404" font-family="'Inter', Arial, sans-serif" font-size="30" font-weight="500" fill="#D5DCE8">
+    Tradie websites, small business websites, landing pages
+  </text>
+  <text x="82" y="446" font-family="'Inter', Arial, sans-serif" font-size="30" font-weight="500" fill="#D5DCE8">
+    and ecommerce stores across Melbourne and Australia.
+  </text>
+
+  <rect x="82" y="500" width="386" height="56" rx="28" fill="url(#accent)" />
+  <text x="275" y="537" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">
+    websitebuildernish.com
+  </text>
+</svg>
