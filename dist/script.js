@@ -3,6 +3,31 @@
 // ── Mobile Menu ──────────────────────────────────────
 const menuToggle = document.getElementById('menuToggle');
 const mainNav    = document.getElementById('mainNav');
+const mainContent = document.getElementById('mainContent');
+const siteFooter = document.querySelector('.site-footer');
+let menuScrollY = 0;
+
+const setPageInteractivity = (isMenuOpen) => {
+  [mainContent, siteFooter].forEach((element) => {
+    if (!element) return;
+
+    if ('inert' in element) {
+      element.inert = isMenuOpen;
+    }
+  });
+};
+
+const lockBodyScroll = () => {
+  menuScrollY = window.scrollY;
+  document.body.classList.add('menu-open');
+  document.body.style.top = `-${menuScrollY}px`;
+};
+
+const unlockBodyScroll = () => {
+  document.body.classList.remove('menu-open');
+  document.body.style.top = '';
+  window.scrollTo(0, menuScrollY);
+};
 
 const syncMenuAccessibility = () => {
   const isDesktop = window.innerWidth > 768;
@@ -16,7 +41,19 @@ const setMenuState = (isOpen) => {
   menuToggle.classList.toggle('open', isOpen);
   menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+
+  if (window.innerWidth <= 768) {
+    if (isOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+  } else {
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+  }
+
+  setPageInteractivity(isOpen && window.innerWidth <= 768);
   syncMenuAccessibility();
 };
 
@@ -57,6 +94,12 @@ window.addEventListener('resize', () => {
   }
 
   syncMenuAccessibility();
+});
+
+window.addEventListener('hashchange', () => {
+  if (mainNav.classList.contains('open')) {
+    setMenuState(false);
+  }
 });
 
 // ── FAQ Accordion ────────────────────────────────────
