@@ -2,10 +2,14 @@
   "name": "websitebuildernish",
   "private": true,
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "node scripts/build-dist.mjs",
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "node scripts/build-dist.mjs && wrangler deploy",
+    "check:dist": "node scripts/build-dist.mjs && git diff --exit-code -- dist"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

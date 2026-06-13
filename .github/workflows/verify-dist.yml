@@ -1,0 +1,25 @@
+name: Verify Dist
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  verify-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify committed dist output is current
+        run: |
+          node scripts/build-dist.mjs
+          git diff --exit-code -- dist

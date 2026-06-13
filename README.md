@@ -8,6 +8,9 @@ A clean, professional static website for a web design and online business setup 
 index.html      — Main HTML (all sections)
 styles.css      — Full CSS (tokens, layout, components, responsive)
 script.js       — Mobile menu, FAQ accordion, scroll behaviour
+dist/           — Production-ready static assets deployed by Cloudflare Workers
+src/index.js    — Minimal Worker entry that serves the static assets
+wrangler.jsonc  — Cloudflare Workers deployment config
 assets/
   favicon.svg   — Teal "N" icon
 ```
@@ -28,7 +31,29 @@ assets/
 
 ## Deployment
 
-Works on any static host. No build step required.
+Works on static hosts, but this repo is set up for Cloudflare Workers git deployments.
+
+- Root source files (`index.html`, `styles.css`, `script.js`, etc.) are the editable source of truth.
+- `dist/` is the committed deployment artifact used by Cloudflare Workers.
+- Regenerate `dist/` after source changes with:
+
+```bash
+node scripts/build-dist.mjs
+```
+
+- Wrangler config is in `wrangler.jsonc`.
+
+For Cloudflare Workers git deployments, the deploy command can be:
+
+```bash
+npx wrangler deploy
+```
+
+If you want the deployment command itself to rebuild `dist/` first, use:
+
+```bash
+npm run deploy
+```
 
 - **Netlify Drop** — Drag the folder to https://app.netlify.com/drop
 - **GitHub Pages** — Push to a repo, enable Pages from Settings
